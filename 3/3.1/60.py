@@ -77,7 +77,7 @@ regressor_poly4.fit(X_train_poly4, y_train)
 # 从新映射绘图用x轴采用数据。
 xx_poly4 = poly4.transform(xx)
 yy_poly4 = regressor_poly4.predict(xx_poly4)
-# # 分别对训练数据点、线性回归直线、2次多项式以及4次多项式回归曲线进行作图。
+# 分别对训练数据点、线性回归直线、2次多项式以及4次多项式回归曲线进行作图。
 plt.scatter(X_train, y_train)
 plt1,= plt.plot(xx, yy, label='Degree=1')
 plt2,= plt.plot(xx, yy_poly2, label='Degree=2')
