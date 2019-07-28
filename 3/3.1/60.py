@@ -100,3 +100,35 @@ print(regressor_poly2.score(X_test_poly2, y_test))
 # 使用测试数据对4次多项式回归模型的性能进行评估
 X_test_poly4 = poly4.transform(X_test)
 print(regressor_poly4.score(X_test_poly4, y_test))
+
+"""Lasso模型在4次多项式特征上的拟合表现"""
+# 从sklearn.linear_model中导入Lasso。
+from sklearn.linear_model import Lasso
+# 使用默认配置初始化Lasso。
+lasso_poly4 = Lasso()
+# 使用Lasso对4次多项式特征进行拟合。
+lasso_poly4.fit(X_train_poly4, y_train)
+# 对Lasso模型在测试样本上的回归性能进行评估。
+print(lasso_poly4.score(X_test_poly4, y_test))
+# 输出Lasso模型的参数列表。
+print(lasso_poly4.coef_)
+# 回顾普通4次多项式回归模型过拟合之后的性能。
+print(regressor_poly4.score(X_test_poly4, y_test))
+# 回顾普通4次多项式回归模型的参数列表。
+print(regressor_poly4.coef_)
+
+"""Ridge模型在4次多项式特征上的拟合表现"""
+# 输出上述这些参数的平方和，验证参数之间的巨大差距。
+print(np.sum(regressor_poly4.coef_ ** 2))
+# 从sklearn.linear_model导入Ridge
+from sklearn.linear_model import Ridge
+# 使用默认配置初始化Ridge
+ridge_poly4 = Ridge()
+# 对4次多项式特征进行拟合。
+ridge_poly4.fit(X_train_poly4, y_train)
+# 输出Ridge模型在测试样本上的回归性能。
+print(ridge_poly4.score(X_test_poly4, y_test))
+# 输出Ridge模型的参数列表，观察参数差异。
+print(ridge_poly4.coef_)
+# 计算Ridge模型拟合后参数的平方和。
+print(np.sum(ridge_poly4.coef_ ** 2))
